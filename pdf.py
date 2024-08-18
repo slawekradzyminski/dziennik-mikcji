@@ -31,7 +31,7 @@ with PdfPages(pdf_filename_new) as pdf:
     ax.axis('off')
     
     # Table Title
-    table_title_new = "Dziennik Mikcji, Pacjent/ka .................................. , Waga ............... , Wiek .................... , Data ......................"
+    table_title_new = "Dziennik Mikcji, Pacjent/ka .................................. , Waga ............... , Wzrost .................. , Data ......................"
     plt.text(0.5, 1.05, table_title_new, ha='center', fontsize=12, transform=ax.transAxes, fontname='Arial')
     
     # Create the table
@@ -45,6 +45,10 @@ with PdfPages(pdf_filename_new) as pdf:
         if key[0] == 0:  # this is the header row
             cell.set_height(0.15)
             cell.set_text_props(weight='bold', fontname='Arial')
+    
+    # Add two lines below the table
+    plt.text(0.05, -0.05, "Ilość wypitego płynu przez 24h (suma wartości z drugiej kolumny): .........", fontsize=10, transform=ax.transAxes, fontname='Arial')
+    plt.text(0.05, -0.08, "Ilość wizyt w toalecie przez 24h w dzień: ........, w nocy: ........", fontsize=10, transform=ax.transAxes, fontname='Arial')
     
     pdf.savefig(fig, bbox_inches='tight', pad_inches=0.2)
     plt.close()
