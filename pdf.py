@@ -5,17 +5,17 @@ from matplotlib.backends.backend_pdf import PdfPages
 # Simplified column titles
 columns_print = [
     "Godzina", 
-    "Rodzaj \n wypitego \n płynu", 
     "Ilość \n wypitego \n płynu \n (ml)", 
-    "Uczucie parcia \n na pęcherz \n (1-4)", 
+    "Rodzaj \n wypitego \n płynu", 
+    "Uczucie parcia \n na pęcherz \n (0-4)", 
     "Ilość \n oddanego \n moczu \n (ml)", 
     "Epizody \n nietrzymania \n moczu \n (mało, średnio, \n dużo)", 
-    "W jakiej \n sytuacji \n popuszczono \n mocz"
+    "Uwagi"
 ]
 
-# Generate hours from 08:00 to 08:00 next day
-hours = [f"{hour:02d}:00" for hour in range(8, 32)]
-hours = [f"{int(hour.split(':')[0]) % 24:02d}:00" for hour in hours] + ["08:00"]
+# Generate hours from 06:00 to 06:00 next day
+hours = [f"{hour:02d}:00" for hour in range(6, 30)]
+hours = [f"{int(hour.split(':')[0]) % 24:02d}:00" for hour in hours] + ["06:00"]
 
 # Create initial empty dataframe
 data = {col: [""] * 25 for col in columns_print}
